@@ -337,6 +337,7 @@ for _,aresta in arestas.iterrows():
 #questao8(grafo)
 #questao9(grafo)
 #questao10(grafo)
+#comentario teste git
 
 
 
