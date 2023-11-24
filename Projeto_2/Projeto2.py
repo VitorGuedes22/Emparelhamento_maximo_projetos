@@ -28,27 +28,44 @@ def student_data(entrada_alunos):
         aluno,atributos = linha.split(":")
 
         #Remove caracters especiais não uteis para analises
-        atributos = atributos.replace("(", "").replace(")", "").replace(",", "")
+        atributos = atributos.replace("(", "").replace(")", "").replace(",", "").replace("\n", "")
         
-        #Separa as preferencias e nota do aluno em variaveis diferentes
-        preferencias = atributos.split(" ")
-        nota = preferencias.pop(len(preferencias) - 1)
+        try:
+            #Separa as preferencias e nota do aluno em variaveis diferentes
+            preferencias = atributos.split(" ")
+            nota = int(preferencias.pop(-1))
+        
+        except:
+            print(f"ERRO no aluno: {aluno} com {preferencias}")
 
         #Popula o dicionario de alunos com os valores de seus atributos
-        student_data[aluno] = (preferencias,int(nota))
+        student_data[aluno] = (preferencias,nota)
 
     return student_data
 
-#for aluno,atributos in student_data(entrada_alunos).items():
-#    print(f"Aluno:{aluno} Preferencias:{atributos[0]} Nota:{atributos[1]}")
 
 entradaDados = open("entradaProj2TAG.txt","+r").readlines()
 entrada_projetos = entradaDados[3:53]
 entrada_alunos = entradaDados[56:]
 
-entrada_projetos = project_data
+entrada_projetos = project_data(entrada_projetos)
+entrada_alunos = student_data(entrada_alunos)
 
-Grafo = nx.Graph()
-Grafo.add_nodes_from(project_data(entrada_projetos).items(), bipartite = 0)
-Grafo.add_nodes_from(student_data(entrada_alunos).items(), bipartite = 1)
+Grafo = nx.DiGraph()
+
+for projeto,especificacoes in entrada_projetos.items():
+    Grafo.add_node(projeto, vagas = especificacoes[0], nota = especificacoes[1])
+
+for aluno,atributos in entrada_alunos.items():
+    Grafo.add_node(aluno, vagas = 0, nota = atributos[1])
+    
+    notaAluno = atributos[1]
+    for projetoInteresse in atributos[0]:
+        if notaAluno >= Grafo.nodes[projetoInteresse]["nota"]:
+            Grafo.add_edge(aluno,projetoInteresse)
+
+print(Grafo)
+
+#Grafo.add_nodes_from(entrada_projetos.keys(), bipartite = 0)
+#Grafo.add_nodes_from(entrada_alunos.keys(), bipartite = 1)
 
