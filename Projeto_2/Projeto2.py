@@ -8,6 +8,7 @@ from networkx.algorithms import community
 from matplotlib import cm
 import numpy as np
 from community import community_louvain
+from igraph import Graph
 
 def project_data(entrada_projetos):
     project_data = {}
@@ -43,6 +44,23 @@ def student_data(entrada_alunos):
 
     return student_data
 
+def geraGrafo(entrada_alunos,entrada_projetos):
+    Grafo = nx.Graph()
+    for projeto,especificacoes in entrada_projetos.items():
+        Grafo.add_node(projeto, vagas = especificacoes[0], 
+                       nota = especificacoes[1], bipartite=0)
+
+    for aluno,atributos in entrada_alunos.items():
+        Grafo.add_node(aluno, vagas = 0, 
+                       nota = atributos[1], bipartite=1)
+        
+        notaAluno = atributos[1]
+        for projetoInteresse in atributos[0]:
+            if notaAluno >= Grafo.nodes[projetoInteresse]["nota"]:
+                Grafo.add_edge(aluno,projetoInteresse)
+    
+    return Grafo
+
 
 entradaDados = open("entradaProj2TAG.txt","+r").readlines()
 entrada_projetos = entradaDados[3:53]
@@ -51,21 +69,20 @@ entrada_alunos = entradaDados[56:]
 entrada_projetos = project_data(entrada_projetos)
 entrada_alunos = student_data(entrada_alunos)
 
-Grafo = nx.DiGraph()
+Grafo = geraGrafo(entrada_alunos,entrada_projetos)
 
-for projeto,especificacoes in entrada_projetos.items():
-    Grafo.add_node(projeto, vagas = especificacoes[0], nota = especificacoes[1])
 
-for aluno,atributos in entrada_alunos.items():
-    Grafo.add_node(aluno, vagas = 0, nota = atributos[1])
-    
-    notaAluno = atributos[1]
-    for projetoInteresse in atributos[0]:
-        if notaAluno >= Grafo.nodes[projetoInteresse]["nota"]:
-            Grafo.add_edge(aluno,projetoInteresse)
 
-print(Grafo)
+if nx.bipartite.is_bipartite(Grafo):
+    conjunto1, conjunto2 = nx.bipartite.sets(Grafo)
+    print("Conjunto 1:", conjunto1)
+    print("Conjunto 2:", conjunto2)
+else:
+    print("O grafo não é bipartido.")
 
+#Grafo = Graph.from_networkx(Grafo)
+#print(nx.is_bipartite(Grafo))
+#print(Grafo)
 #Grafo.add_nodes_from(entrada_projetos.keys(), bipartite = 0)
 #Grafo.add_nodes_from(entrada_alunos.keys(), bipartite = 1)
 
