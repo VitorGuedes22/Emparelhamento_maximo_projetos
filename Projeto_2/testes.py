@@ -1,18 +1,28 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 
-# Criando um grafo simples
+# Exemplo de grafo bipartido com atributos numéricos
 G = nx.Graph()
-G.add_edges_from([(1, 2), (1, 3), (2, 3), (2, 4), (3, 4), (4, 5)])
+G.add_nodes_from(['A', 'B', 'C', 'D'], bipartite=0)
+G.add_nodes_from(['1', '2', '3', '4'], bipartite=1)
 
-# Encontrando o emparelhamento máximo
-max_matching = nx.max_weight_matching(G)
+# Atributos numéricos para os vértices do lado 'A'
+nx.set_node_attributes(G, {'A': 5, 'B': 7, 'C': 3, 'D': 6}, name='weight')
 
-print("Emparelhamento máximo:", max_matching)
+# Atributos numéricos para os vértices do lado 'B'
+nx.set_node_attributes(G, {'1': 4, '2': 6, '3': 2, '4': 5}, name='weight')
 
-# Desenhar o grafo
-pos = nx.spring_layout(G)
-plt.figure(figsize=(8, 6))
-nx.draw(G, pos, with_labels=True, node_size=500, node_color='lightblue')
-nx.draw_networkx_edges(G, pos, edgelist=max_matching, edge_color='red', width=2)
-plt.show()
+# Separando os conjuntos de vértices bipartidos
+top_nodes = {n for n, d in G.nodes(data=True) if d['bipartite'] == 0}
+bottom_nodes = set(G) - top_nodes
+
+# Criando um grafo completo bipartido ponderado baseado nos pesos
+weighted_edges = [(u, v, -abs(G.nodes[u]['weight'] - G.nodes[v]['weight'])) for u in top_nodes for v in bottom_nodes]
+weighted_graph = nx.Graph()
+weighted_graph.add_weighted_edges_from(weighted_edges)
+
+# Encontrando o emparelhamento perfeito máximo no grafo ponderado
+max_weight_matching = nx.max_weight_matching(weighted_graph, maxcardinality=True)
+
+print("Emparelhamento máximo:")
+for vertex in max_weight_matching:
+    print(f"{vertex} está emparelhado com {max_weight_matching[vertex]}")
