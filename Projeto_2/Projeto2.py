@@ -9,6 +9,7 @@ from matplotlib import cm
 import numpy as np
 from community import community_louvain
 from igraph import Graph
+import random
 
 def project_data(entrada_projetos):
     project_data = {}
@@ -150,19 +151,22 @@ def emparelhamentoEstavelUmAluno(Grafo,projetos,alunos):
     return stable_matching
 
 def emparelhamentoEstavel(Grafo,projetos,alunos):
-    stable_matching = {} #{projeto:aluno}
     alunos = list(alunos)
+    random.shuffle(alunos)
+    stable_matching = {projeto:None for projeto in projetos} #{projeto:aluno}
 
     #faz eparelhamento enquanto tiver aluno sem ser avaliado
     while len(alunos) > 0:
-
+        #numeroAleatorio = random.randint(0,len(alunos) - 1)
+        #print(numeroAleatorio)
+        #print(f"tamanho alunos:{len(alunos)}")
         aluno = alunos.pop(0) #aluno atual
         alunoProjetosCandidato = Grafo.neighbors(aluno)  #projetos que o aluno se candidata
         notaAluno = Grafo.nodes[aluno]["nota"]  #Nota de argumento do aluno
         
-        print(f"aluno: {aluno}")
-        print(f"alunoProjetosCandidato: {alunoProjetosCandidato}")
-        print(f"Nota do aluno {aluno}: {notaAluno}")
+        #print(f"aluno: {aluno}")
+        #print(f"alunoProjetosCandidato: {alunoProjetosCandidato}")
+        #print(f"Nota do aluno {aluno}: {notaAluno}")
 
         for projeto in alunoProjetosCandidato:
 
@@ -172,6 +176,7 @@ def emparelhamentoEstavel(Grafo,projetos,alunos):
             if (notaAluno >= requesitoProjeto):
                 quantVagasProjeto = Grafo.nodes[projeto]["vagas"]
                 
+                #Add o aluno ao projeto e decrementa vagas
                 if quantVagasProjeto > 0:
                     if projeto not in stable_matching.keys():   
                         stable_matching[projeto] = {aluno:notaAluno}
@@ -183,6 +188,7 @@ def emparelhamentoEstavel(Grafo,projetos,alunos):
                 else:
                     notaMaisBaixaProjeto = min(stable_matching[projeto].values())
 
+                    #Substitui o aluno de nota mais baixa no projeto
                     if notaAluno > notaMaisBaixaProjeto:
                         #Remove do projeto o aluno de nota mais baixa
                         alunosProjeto = stable_matching[projeto]
@@ -200,6 +206,134 @@ def emparelhamentoEstavel(Grafo,projetos,alunos):
     return stable_matching
 
 
+
+def GrafoEmparelhado(grafo,stable_matching):
+    graph_matching = nx.Graph()
+    derivacoes = ['A','B','C','D','E','F']
+
+    for projeto,alunos_casados in stable_matching.items():
+        for aluno in range(len(alunos_casados.keys())):
+            #Cria um vertice de projeto e aluno para cada par (projeto,aluno)
+            projeto_derivado = projeto + "_" + derivacoes[aluno]
+            student = list(alunos_casados.keys())[aluno]
+            
+            #Divide projetos e alunos em particoes diferentes
+            graph_matching.add_node(projeto_derivado,bipartite = 0)
+            graph_matching.add_node(student,bipartite = 1)
+
+            #Cria aresta (projeto,aluno)
+            graph_matching.add_edge(projeto_derivado,student)
+
+    #Obtem todos projetos e alunos e do grafo original
+    projetos, alunos = getBiparticao(grafo)
+    
+    #Separa projetos nao emparelhados
+    projetos = projetos - {vertice for vertice, atributos in graph_matching.nodes(data=True) 
+                if atributos["bipartite"] == 0}
+    
+    #Separa alunos nao emparelhados
+    alunos = alunos - {vertice for vertice, atributos in graph_matching.nodes(data=True) 
+                if atributos["bipartite"] == 1}
+    
+    #verticesIsolados = projetos.union(alunos)    #Conjunto de todos vertices nao emparelhados
+    
+    graph_matching.add_nodes_from(projetos,bipartite = 0)
+    graph_matching.add_nodes_from(alunos,bipartite = 1)
+
+    return graph_matching
+
+def encontrar_vertices_com_valor(graph, attribute, value):
+    vertices_com_valor = []
+    for node in graph.nodes(data=True):
+        if attribute in node[1] and node[1][attribute] == value:
+            vertices_com_valor.append(node[0])
+    return vertices_com_valor
+
+def searchVertexDegree(G,attribute,value):
+    desemparelhados = []
+    for node in G.nodes():
+        # Verifica se o nó tem o atributo desejado
+        if attribute in G.nodes[node] and G.nodes[node][attribute] == value and G.degree(node) == 0:
+            desemparelhados.append(node[0])
+
+    return desemparelhados
+
+def imprimeEmparelhamento(emparelhamento):
+    projetosEmparelhados = set()
+    alunosEmparelhados = set()
+    
+    for projeto, aluno in emparelhamento.edges():
+        print(f"{projeto} -- {aluno}")
+
+        projetosEmparelhados.add(projeto)
+        alunosEmparelhados.add(aluno)
+
+    print(f"Quantidade de alunos emparelhados:{len(emparelhamento.edges())}")
+        
+    projetosDesemparelhados = set(searchVertexDegree(emparelhamento,"bipartite",0))
+    alunosDesemparelhados = set(searchVertexDegree(emparelhamento,"bipartite",1))
+    
+
+    if len(projetosDesemparelhados) == 0:
+        print(f"Todos projetos possuem alunos")
+    else:
+        print(f"Projetos sem alunos: {projetosDesemparelhados}")
+        print(f"Total de projetos sem alunos: {len(projetosDesemparelhados)}")
+
+    
+    if len(alunosDesemparelhados) == 0:
+        print(f"Todos alunos estao em algum projeto")
+    else:
+        print(f"Alunos sem projetos: {alunosDesemparelhados}")
+        print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)}")
+
+
+def itemA(grafo):
+    print("########################### ITEM A ############################")
+    
+    if nx.is_bipartite(grafo):
+        print(f"O grafo é bipartido com {Grafo.number_of_nodes()} vertices e {Grafo.number_of_edges()} arestas")
+        projetos,alunos = getBiparticao(Grafo)
+        print(f"Quantidade de vertices da particao de projetos:{len(list(projetos))}")
+        print(f"Quantidade de vertices da particao de alunos:{len(list(alunos))}")
+
+    else:
+        print("O grafo nao possui biparticao")
+
+    print("\n")
+
+
+
+
+def itemB(grafo):
+    print("######################### ITEM B ########################")
+    projetos,alunos = getBiparticao(grafo)
+    stable_matching = emparelhamentoEstavel(grafo,projetos,alunos)
+    
+    stable_matching_graph = GrafoEmparelhado(grafo,stable_matching)
+
+    imprimeEmparelhamento(stable_matching_graph)
+    print("\n")
+
+
+def itemC(grafo):
+    print("######################## ITEM C #########################")
+
+    maior = 0
+    projetos,alunos = getBiparticao(grafo)
+    for i in range(10):
+        stable_matching = emparelhamentoEstavel(grafo,projetos,alunos)
+        
+        stable_matching_graph = GrafoEmparelhado(grafo,stable_matching)
+
+        if len(stable_matching_graph.edges()) > maior:
+            maior = len(stable_matching_graph.edges())
+
+    print(f"Maior emparelhamento:{maior}")
+
+    print("\n")
+
+
 #Le arquivo de entrada e separa os dados dos projetos e alunos
 entradaDados = open("entradaProj2TAG.txt","+r").readlines()
 entrada_projetos = entradaDados[3:53]
@@ -209,19 +343,13 @@ entrada_alunos = entradaDados[56:]
 entrada_projetos = project_data(entrada_projetos)
 entrada_alunos = student_data(entrada_alunos)
 
-#Gera grafo considerando aceitacao dos alunos nos projetos para as arestas
-Grafo = geraGrafoComNota(entrada_alunos,entrada_projetos)
+totalVagas = sum(vagas for vagas,nota in entrada_projetos.values())
+print(f"Total de vagas dos projetos: {totalVagas}")
 
-print(f"Total de vertices:{Grafo.number_of_nodes()} total de arestas:{Grafo.number_of_edges()}")
-projetos,alunos = getBiparticao(Grafo)
-print(f"Quantidade projeto:{len(list(projetos))}")
-print(f"Quantidade alunos:{len(list(alunos))}")
+Grafo = geraGrafo(entrada_alunos,entrada_projetos)
 
-stable_matching = emparelhamentoEstavel(Grafo,projetos,alunos)
-print(stable_matching)
-
-print(f"projetos:{list(stable_matching.keys())}")
-print(f"quantidade de projetos:{len(stable_matching)}")
+#itemB(Grafo)
+itemC(Grafo)
 
 
 #max_matching = nx.max_weight_matching(Grafo, maxcardinality=True, weight="weigth")
