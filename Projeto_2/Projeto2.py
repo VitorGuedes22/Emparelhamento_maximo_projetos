@@ -1,15 +1,6 @@
 import networkx as nx
-import pandas as pd
-import networkx as nx
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from networkx.algorithms import community
-from matplotlib import cm
-import numpy as np
-from community import community_louvain
-from igraph import Graph
 import random
+import subprocess
 
 def project_data(entrada_projetos):
     project_data = {}
@@ -173,8 +164,8 @@ def emparelhamentoEstavel(Grafo,projetos,alunos):
 
     #faz eparelhamento enquanto tiver aluno sem ser avaliado
     while len(alunos) > 0:
-        #numeroAleatorio = random.randint(0,len(alunos) - 1)
-        aluno = alunos.pop(0) #aluno atual
+        numeroAleatorio = random.randint(0,len(alunos) - 1)
+        aluno = alunos.pop(numeroAleatorio) #aluno atual
         alunoProjetosCandidato = Grafo.neighbors(aluno)  #projetos que o aluno se candidata
         notaAluno = Grafo.nodes[aluno]["nota"]  #Nota de argumento do aluno
         
@@ -279,13 +270,13 @@ def imprimeEmparelhamento(emparelhamento):
         print(f"Todos projetos possuem alunos")
     else:
         print(f"Projetos sem alunos: {projetosDesemparelhados}")
-        print(f"Total de projetos sem alunos: {len(projetosDesemparelhados)} \n")
+        print(f"Total de projetos sem alunos: {len(projetosDesemparelhados)}")
 
     
     if len(alunosDesemparelhados) == 0:
         print(f"Todos alunos estao em algum projeto")
     else:
-        print(f"Alunos sem projetos: {alunosDesemparelhados}")
+        print(f"Alunos sem projetos: {alunosDesemparelhados} \n")
         print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)} \n")
 
 
@@ -317,9 +308,7 @@ def itemB(grafo):
     print("\n")
 
 
-def itemC(grafo):
-    print("######################## ITEM C #########################")
-
+def item(grafo):
     emparelhamentos = []
     projetos,alunos = getBiparticao(grafo)
     maiorEmparelhamento = nx.Graph()
@@ -372,11 +361,19 @@ entrada_alunos = student_data(entrada_alunos)
 
 Grafo = geraGrafo(entrada_alunos,entrada_projetos)
 
-itemA(Grafo)
+# itemA(Grafo)
+# Grafo = geraGrafo(entrada_alunos,entrada_projetos)
+# itemB(Grafo)
 Grafo = geraGrafo(entrada_alunos,entrada_projetos)
-itemB(Grafo)
-Grafo = geraGrafo(entrada_alunos,entrada_projetos)
-itemC(Grafo)
+item(Grafo)
+
+# Comando que você quer executar e cuja saída quer redirecionar
+comando = "ls -l"  # Exemplo de comando para listar arquivos no diretório atual
+
+# Redirecionando a saída para um arquivo texto
+with open('saida.txt', 'w') as arquivo_saida:
+    subprocess.run(comando, shell=True, stdout=arquivo_saida)
+
 
 
 
