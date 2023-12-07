@@ -1,0 +1,102 @@
+O grafo é bipartido com 250 vertices e 588 arestas
+Quantidade de vertices da particao de projetos:50
+Quantidade de vertices da particao de alunos:200
+
+
+Primeiro emparelhamento com 40 projetos e 69 alunos 
+
+Iteracao:2;   Houveram mudancas de 6 arestas;
+Arestas diferentes: {('P48_A', '(A188)'), ('P50_A', '(A1)'), ('P31_A', '(A127)'), ('P50_B', '(A2)'), ('P44_A', '(A82)'), ('P38_A', '(A197)')}
+
+Iteracao:3;   Houveram mudancas de 0 arestas;
+
+Iteracao:4;   Houveram mudancas de 0 arestas;
+
+Iteracao:5;   Houveram mudancas de 0 arestas;
+
+Iteracao:6;   Houveram mudancas de 0 arestas;
+
+Iteracao:7;   Houveram mudancas de 0 arestas;
+
+Iteracao:8;   Houveram mudancas de 0 arestas;
+
+Iteracao:9;   Houveram mudancas de 0 arestas;
+
+Iteracao:10;   Houveram mudancas de 0 arestas;
+
+Maior emparelhamento:
+P18_A -- (A22)
+P18_B -- (A101)
+P18_C -- (A198)
+P7_A -- (A17)
+P7_B -- (A117)
+P7_C -- (A187)
+P4_A -- (A84)
+P29_A -- (A149)
+P16_A -- (A42)
+P34_A -- (A74)
+P43_A -- (A196)
+P14_A -- (A151)
+P14_B -- (A131)
+P3_A -- (A147)
+P3_B -- (A33)
+P10_A -- (A102)
+P30_A -- (A165)
+P9_A -- (A99)
+P9_B -- (A66)
+P41_A -- (A107)
+P41_B -- (A7)
+P41_C -- (A197)
+P28_A -- (A127)
+P23_A -- (A195)
+P26_A -- (A142)
+P26_B -- (A193)
+P36_A -- (A68)
+P36_B -- (A168)
+P17_A -- (A181)
+P17_B -- (A21)
+P17_C -- (A161)
+P17_D -- (A61)
+P31_A -- (A167)
+P33_A -- (A53)
+P33_B -- (A73)
+P35_A -- (A75)
+P35_B -- (A55)
+P40_A -- (A156)
+P40_B -- (A114)
+P40_C -- (A34)
+P47_A -- (A158)
+P47_B -- (A96)
+P24_A -- (A175)
+P32_A -- (A172)
+P32_B -- (A171)
+P5_A -- (A85)
+P5_B -- (A35)
+P15_A -- (A44)
+P15_B -- (A135)
+P21_A -- (A137)
+P21_B -- (A177)
+P27_A -- (A83)
+P27_B -- (A81)
+P20_A -- (A12)
+P20_B -- (A32)
+P2_A -- (A82)
+P37_A -- (A157)
+P22_A -- (A144)
+P25_A -- (A93)
+P1_A -- (A1)
+P1_B -- (A31)
+P1_C -- (A2)
+P12_A -- (A11)
+P8_A -- (A188)
+P8_B -- (A18)
+P45_A -- (A153)
+P49_A -- (A59)
+P49_B -- (A159)
+P6_A -- (A8)
+
+Quantidade de alunos emparelhados:69
+Total de projetos sem alunos: 10
+Total de alunos sem projeto: 131
+
+

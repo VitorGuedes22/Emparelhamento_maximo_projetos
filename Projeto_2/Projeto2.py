@@ -1,6 +1,9 @@
 import networkx as nx
 import random
 import subprocess
+import sys
+from contextlib import redirect_stdout
+import os
 
 def project_data(entrada_projetos):
     project_data = {}
@@ -260,7 +263,7 @@ def imprimeEmparelhamento(emparelhamento):
         projetosEmparelhados.add(projeto)
         alunosEmparelhados.add(aluno)
 
-    print(f"Quantidade de alunos emparelhados:{len(emparelhamento.edges())} \n")
+    print(f"\nQuantidade de alunos emparelhados:{len(emparelhamento.edges())}")
         
     projetosDesemparelhados = searchVertexDegree(emparelhamento,"bipartite",0)
     alunosDesemparelhados = searchVertexDegree(emparelhamento,"bipartite",1)
@@ -269,15 +272,15 @@ def imprimeEmparelhamento(emparelhamento):
     if len(projetosDesemparelhados) == 0:
         print(f"Todos projetos possuem alunos")
     else:
-        print(f"Projetos sem alunos: {projetosDesemparelhados}")
+        #print(f"Projetos sem alunos: {projetosDesemparelhados}")
         print(f"Total de projetos sem alunos: {len(projetosDesemparelhados)}")
 
     
     if len(alunosDesemparelhados) == 0:
         print(f"Todos alunos estao em algum projeto")
     else:
-        print(f"Alunos sem projetos: {alunosDesemparelhados} \n")
-        print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)} \n")
+        #print(f"Alunos sem projetos: {alunosDesemparelhados} \n")
+        print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)}")
 
 
 def itemA(grafo):
@@ -309,6 +312,18 @@ def itemB(grafo):
 
 
 def item(grafo):
+
+    if nx.is_bipartite(grafo):
+        print(f"O grafo é bipartido com {Grafo.number_of_nodes()} vertices e {Grafo.number_of_edges()} arestas")
+        projetos,alunos = getBiparticao(Grafo)
+        print(f"Quantidade de vertices da particao de projetos:{len(list(projetos))}")
+        print(f"Quantidade de vertices da particao de alunos:{len(list(alunos))}")
+
+    else:
+        print("O grafo nao possui biparticao")
+
+    print("\n")
+
     emparelhamentos = []
     projetos,alunos = getBiparticao(grafo)
     maiorEmparelhamento = nx.Graph()
@@ -356,24 +371,20 @@ entrada_alunos = entradaDados[56:]
 entrada_projetos = project_data(entrada_projetos)
 entrada_alunos = student_data(entrada_alunos)
 
-#totalVagas = sum(vagas for vagas,nota in entrada_projetos.values())
-#print(f"Total de vagas dos projetos: {totalVagas}")
+#Define arquivo que obtera a saida do programa
+nome_arquivo = 'saida.txt'
 
-Grafo = geraGrafo(entrada_alunos,entrada_projetos)
+# Abre o arquivo de saida para escrita
+with open(nome_arquivo, 'w') as arquivo_saida:
+    # Redireciona a saída para o arquivo
+    with redirect_stdout(arquivo_saida):
+        Grafo = geraGrafo(entrada_alunos,entrada_projetos)
+        item(Grafo)
 
-# itemA(Grafo)
-# Grafo = geraGrafo(entrada_alunos,entrada_projetos)
-# itemB(Grafo)
-Grafo = geraGrafo(entrada_alunos,entrada_projetos)
-item(Grafo)
-
-# Comando que você quer executar e cuja saída quer redirecionar
-comando = "ls -l"  # Exemplo de comando para listar arquivos no diretório atual
-
-# Redirecionando a saída para um arquivo texto
-with open('saida.txt', 'w') as arquivo_saida:
-    subprocess.run(comando, shell=True, stdout=arquivo_saida)
-
-
-
+os.startfile(nome_arquivo)
+    
+#Le o arquivo que contem a saida do resultado do programa
+# with open(nome_arquivo, '+r') as arquivo:
+#     #Imprime no terminal o resultado do programa contido no arquivo
+#     print(arquivo.read())
 
