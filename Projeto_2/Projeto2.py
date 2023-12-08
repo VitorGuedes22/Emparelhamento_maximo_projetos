@@ -5,6 +5,7 @@ import sys
 from contextlib import redirect_stdout
 import os
 
+
 def project_data(entrada_projetos):
     project_data = {}
     for linha in entrada_projetos:
@@ -16,6 +17,7 @@ def project_data(entrada_projetos):
         project_data[projeto] = (int(vagas.replace(" ","")),int(nota.replace(" ","")))  
 
     return project_data
+
 
 def student_data(entrada_alunos):
     student_data = {}
@@ -39,29 +41,6 @@ def student_data(entrada_alunos):
 
     return student_data
 
-def geraGrafoComNota(entrada_alunos,entrada_projetos):
-    Grafo = nx.Graph()
-
-    #Passa os vertices dos projetos como particao 0
-    for projeto,especificacoes in entrada_projetos.items():
-        Grafo.add_node(projeto, vagas = especificacoes[0], 
-                       nota = especificacoes[1], bipartite=0)
-
-    #Passa dos vertices dos alunos particao 1
-    for aluno,atributos in entrada_alunos.items():
-        Grafo.add_node(aluno, vagas = 0, 
-                       nota = atributos[1], bipartite=1)
-        
-        #Obtem nota do aluno para avaliar a criacao de aresta
-        notaAluno = atributos[1]
-
-        #Cria aresta somente com os projetos que aceitam a nota do aluno
-        for projetoInteresse in atributos[0]:
-            if notaAluno >= Grafo.nodes[projetoInteresse]["nota"]:
-                #Cria aresta atribuindo a nota do aluno como peso
-                Grafo.add_edge(aluno,projetoInteresse,weight=notaAluno)
-    
-    return Grafo
 
 def geraGrafo(entrada_alunos,entrada_projetos):
     Grafo = nx.Graph()
@@ -84,6 +63,7 @@ def geraGrafo(entrada_alunos,entrada_projetos):
     
     return Grafo
 
+
 def getBiparticao(Grafo):
     #Obtem particao zero 
     projetos = {vertice for vertice, atributos in Grafo.nodes(data=True) 
@@ -94,12 +74,6 @@ def getBiparticao(Grafo):
     
     return projetos,alunos
 
-def encontrar_vertices_com_valor(graph, attribute, value):
-    vertices_com_valor = []
-    for node in graph.nodes(data=True):
-        if attribute in node[1] and node[1][attribute] == value:
-            vertices_com_valor.append(0)
-    return vertices_com_valor
 
 def searchVertexDegree(G,attribute,value):
     desemparelhados = set()
@@ -110,7 +84,8 @@ def searchVertexDegree(G,attribute,value):
 
     return desemparelhados
 
-def emparelhamentoEstavelUmAluno(Grafo,projetos,alunos):
+
+def galeyShapleyUmAluno(Grafo,projetos,alunos):
     stable_matching = {} #{projeto:aluno}
 
     #lista de alunos sem atributos
@@ -160,7 +135,8 @@ def emparelhamentoEstavelUmAluno(Grafo,projetos,alunos):
 
     return stable_matching
 
-def emparelhamentoEstavel(Grafo,projetos,alunos):
+
+def galeyShapley(Grafo,projetos,alunos):
     alunos = list(alunos)   #garante que o objeto sera uma lita
     random.shuffle(alunos)  #Embaralha a lista
     stable_matching = {} #aluno projeto
@@ -208,15 +184,7 @@ def emparelhamentoEstavel(Grafo,projetos,alunos):
                         break
        
     return stable_matching
-
-def galeyShapley(grafo,projetos,alunos):
-    stable_matching = {}
-
-
-    return stable_matching 
     
-
-
 
 def GrafoEmparelhado(grafo,stable_matching):
     graph_matching = nx.Graph()
@@ -283,34 +251,6 @@ def imprimeEmparelhamento(emparelhamento):
         print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)}")
 
 
-def itemA(grafo):
-    print("########################### ITEM A ############################")
-    
-    if nx.is_bipartite(grafo):
-        print(f"O grafo é bipartido com {Grafo.number_of_nodes()} vertices e {Grafo.number_of_edges()} arestas")
-        projetos,alunos = getBiparticao(Grafo)
-        print(f"Quantidade de vertices da particao de projetos:{len(list(projetos))}")
-        print(f"Quantidade de vertices da particao de alunos:{len(list(alunos))}")
-
-    else:
-        print("O grafo nao possui biparticao")
-
-    print("\n")
-
-
-
-
-def itemB(grafo):
-    print("######################### ITEM B ########################")
-    projetos,alunos = getBiparticao(grafo)
-    stable_matching = emparelhamentoEstavel(grafo,projetos,alunos)
-    
-    stable_matching_graph = GrafoEmparelhado(grafo,stable_matching)
-
-    imprimeEmparelhamento(stable_matching_graph)
-    print("\n")
-
-
 def item(grafo):
 
     if nx.is_bipartite(grafo):
@@ -329,7 +269,7 @@ def item(grafo):
     maiorEmparelhamento = nx.Graph()
 
     for i in range(10):
-        stable_matching = emparelhamentoEstavel(grafo,projetos,alunos)
+        stable_matching = galeyShapley(grafo,projetos,alunos)
         stable_matching_graph = GrafoEmparelhado(grafo,stable_matching)
         emparelhamentos.append(stable_matching_graph)
 
@@ -359,8 +299,6 @@ def item(grafo):
     print(f"Maior emparelhamento:")
     imprimeEmparelhamento(maiorEmparelhamento)
 
-    print("\n")
-
 
 #Le arquivo de entrada e separa os dados dos projetos e alunos
 entradaDados = open("entradaProj2TAG.txt","+r").readlines()
@@ -383,8 +321,3 @@ with open(nome_arquivo, 'w') as arquivo_saida:
 
 os.startfile(nome_arquivo)
     
-#Le o arquivo que contem a saida do resultado do programa
-# with open(nome_arquivo, '+r') as arquivo:
-#     #Imprime no terminal o resultado do programa contido no arquivo
-#     print(arquivo.read())
-
