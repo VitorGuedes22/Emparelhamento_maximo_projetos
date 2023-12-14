@@ -4,6 +4,7 @@ import subprocess
 import sys
 from contextlib import redirect_stdout
 import os
+import copy
 
 
 def project_data(entrada_projetos):
@@ -137,16 +138,16 @@ def galeyShapleyUmAluno(Grafo,projetos,alunos):
     return stable_matching
 
 
-def galeyShapley1(Grafo,projetos,alunos):
-    Grafo = Grafo.copy()
-    alunos = list(alunos)   #garante que o objeto sera uma lita
+def galeyShapley1(Grafo,projetos,alunos1):
+    alunos = list(copy.deepcopy(alunos1))
+    Grafo = copy.deepcopy(Grafo)
     random.shuffle(alunos)  #Embaralha a lista
     stable_matching = {} #aluno projeto
 
     #faz eparelhamento enquanto tiver aluno sem ser avaliado
     while len(alunos) > 0:
-        numeroAleatorio = random.randint(0,len(alunos) - 1)
-        aluno = alunos.pop(numeroAleatorio) #aluno atual
+        #numeroAleatorio = random.randint(0,len(alunos) - 1)
+        aluno = alunos.pop(0) #aluno atual
         alunoProjetosCandidato = Grafo.neighbors(aluno)  #projetos que o aluno se candidata
         notaAluno = Grafo.nodes[aluno]["nota"]  #Nota de argumento do aluno
         
@@ -307,7 +308,7 @@ def imprimeEmparelhamento(emparelhamento):
         print(f"Total de alunos sem projeto: {len(alunosDesemparelhados)}")
 
 
-def galeyShapley2(projetos,alunos):
+def galeShapley2(projetos,alunos):
     alunos = alunos.copy()
     projetos = projetos.copy()
     a = list(alunos.keys())
@@ -347,7 +348,7 @@ def galeyShapley2(projetos,alunos):
     return stable_matching
 
 
-def item(grafo):
+def item(grafo,p,a):
     if nx.is_bipartite(grafo):
         print(f"O grafo é bipartido com {grafo.number_of_nodes()} vertices e {grafo.number_of_edges()} arestas")
         projetos,alunos = getBiparticao(grafo)
@@ -359,9 +360,16 @@ def item(grafo):
 
     emparelhamentos = []
 
+    grafo2 = grafo.copy()
     for i in range(10):
+        #grafo2 = grafo.copy()
+        nodes1 = set(grafo2.edges())
+        nodes2 = set(grafo.edges())
+        if len(nodes2.difference(nodes1)) > 0:
+            print("São diferentes")
         print(f"\n################### Iteracao {i} #####################")
-        stable_matching = galeShapley(grafo,projetos,alunos)
+        stable_matching = galeyShapley1(grafo,projetos,alunos)
+        #stable_matching = galeShapley2(p,a)
         
         stable_matching_graph = GrafoEmparelhado(grafo,stable_matching,projetos,alunos)
         emparelhamentos.append(stable_matching_graph)
@@ -405,7 +413,7 @@ with open(nome_arquivo, 'w') as arquivo_saida:
     #Redireciona a saída para o arquivo
     with redirect_stdout(arquivo_saida):
         Grafo = geraGrafo(entrada_alunos,entrada_projetos)
-        item(Grafo)
+        item(Grafo,entrada_projetos,entrada_alunos)
 
 os.startfile(nome_arquivo)
     

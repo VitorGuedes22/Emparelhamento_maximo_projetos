@@ -4,6 +4,7 @@ import subprocess
 import sys
 from contextlib import redirect_stdout
 import os
+import copy
 
 
 def project_data(entrada_projetos):
@@ -87,10 +88,10 @@ def searchVertexDegree(G,attribute,value):
 
 
 def galeShapley(Grafo,projetos,alunos):
-    Grafo = Grafo.copy()
-    alunos = list(alunos)   #garante que o objeto sera uma lita
+    alunos = list(copy.deepcopy(alunos))
+    Grafo = copy.deepcopy(Grafo)
     random.shuffle(alunos)  #Embaralha a lista
-    stable_matching = {} #aluno projeto
+    stable_matching = {} #{projeto:{aluno:nota}}
 
     #faz eparelhamento enquanto tiver aluno sem ser avaliado
     while len(alunos) > 0:
