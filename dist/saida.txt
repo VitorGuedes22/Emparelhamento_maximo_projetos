@@ -1,0 +1,292 @@
+O grafo é bipartido com 250 vertices e 588 arestas
+Quantidade de vertices da particao de projetos:50
+Quantidade de vertices da particao de alunos:200
+
+################### Iteracao 0 #####################
+Projeto:P4;(A65) saiu, entrou (A34) 
+Projeto:P21;(A77) saiu, entrou (A71) 
+Projeto:P21;(A145) saiu, entrou (A177) 
+Projeto:P21;(A71) saiu, entrou (A157) 
+Projeto:P7;(A17) saiu, entrou (A117) 
+Projeto:P18;(A37) saiu, entrou (A57) 
+Projeto:P18;(A178) saiu, entrou (A101) 
+Projeto:P5;(A60) saiu, entrou (A85) 
+Projeto:P41;(A27) saiu, entrou (A197) 
+Projeto:P20;(A24) saiu, entrou (A32) 
+Projeto:P40;(A134) saiu, entrou (A84) 
+Projeto:P20;(A72) saiu, entrou (A12) 
+Projeto:P23;(A103) saiu, entrou (A195) 
+Projeto:P7;(A129) saiu, entrou (A187) 
+Projeto:P5;(A185) saiu, entrou (A35) 
+Projeto:P3;(A100) saiu, entrou (A147) 
+
+Quantidade de alunos:68
+Quantidade de projetos:40
+Primeiro emparelhamento com 68 pares
+
+################### Iteracao 1 #####################
+Projeto:P34;(A40) saiu, entrou (A174) 
+Projeto:P21;(A77) saiu, entrou (A171) 
+Projeto:P4;(A105) saiu, entrou (A165) 
+Projeto:P21;(A87) saiu, entrou (A145) 
+Projeto:P21;(A171) saiu, entrou (A177) 
+Projeto:P20;(A132) saiu, entrou (A12) 
+Projeto:P18;(A122) saiu, entrou (A22) 
+Projeto:P5;(A60) saiu, entrou (A35) 
+Projeto:P7;(A21) saiu, entrou (A117) 
+Projeto:P7;(A29) saiu, entrou (A187) 
+Projeto:P35;(A3) saiu, entrou (A55) 
+Projeto:P4;(A165) saiu, entrou (A34) 
+Projeto:P21;(A145) saiu, entrou (A137) 
+Projeto:P3;(A4) saiu, entrou (A147) 
+Projeto:P20;(A64) saiu, entrou (A32) 
+Projeto:P40;(A154) saiu, entrou (A84) 
+Projeto:P5;(A185) saiu, entrou (A85) 
+Projeto:P28;(A58) saiu, entrou (A127) 
+Projeto:P3;(A44) saiu, entrou (A33) 
+
+Quantidade de alunos:69
+Quantidade de projetos:40
+Houveram mudancas de 51 arestas:{('P17_A', '(A61)'), ('P35_B', '(A55)'), ('P26_B', '(A143)'), ('P30_A', '(A166)'), ('P27_A', '(A81)'), ('P10_A', '(A150)'), ('P17_C', '(A181)'), ('P27_B', '(A83)'), ('P9_A', '(A169)'), ('P29_A', '(A69)'), ('P8_A', '(A188)'), ('P41_A', '(A47)'), ('P25_A', '(A104)'), ('P7_A', '(A148)'), ('P43_A', '(A46)'), ('P5_B', '(A85)'), ('P37_A', '(A157)'), ('P36_B', '(A56)'), ('P14_B', '(A131)'), ('P34_A', '(A174)'), ('P9_B', '(A149)'), ('P17_D', '(A21)'), ('P33_B', '(A173)'), ('P26_A', '(A93)'), ('P41_C', '(A107)'), ('P12_A', '(A11)'), ('P45_A', '(A153)'), ('P32_A', '(A51)'), ('P24_A', '(A191)'), ('P17_B', '(A161)'), ('P35_A', '(A175)'), ('P20_B', '(A32)'), ('P40_B', '(A6)'), ('P36_A', '(A168)'), ('P22_A', '(A144)'), ('P47_B', '(A96)'), ('P8_B', '(A18)'), ('P18_C', '(A22)'), ('P40_A', '(A16)'), ('P32_B', '(A52)'), ('P21_B', '(A137)'), ('P3_B', '(A33)'), ('P3_A', '(A147)'), ('P5_A', '(A35)'), ('P18_A', '(A101)'), ('P41_B', '(A197)'), ('P20_A', '(A12)'), ('P15_A', '(A54)'), ('P1_B', '(A31)'), ('P1_C', '(A1)'), ('P15_B', '(A14)')}
+
+################### Iteracao 2 #####################
+Projeto:P7;(A17) saiu, entrou (A187) 
+Projeto:P21;(A145) saiu, entrou (A147) 
+Projeto:P18;(A178) saiu, entrou (A198) 
+Projeto:P18;(A122) saiu, entrou (A142) 
+Projeto:P40;(A106) saiu, entrou (A34) 
+Projeto:P20;(A152) saiu, entrou (A32) 
+Projeto:P41;(A97) saiu, entrou (A197) 
+Projeto:P28;(A48) saiu, entrou (A137) 
+Projeto:P7;(A148) saiu, entrou (A117) 
+Projeto:P41;(A47) saiu, entrou (A107) 
+Projeto:P5;(A20) saiu, entrou (A35) 
+
+Quantidade de alunos:70
+Quantidade de projetos:41
+Houveram mudancas de 45 arestas:{('P7_A', '(A21)'), ('P2_A', '(A12)'), ('P12_A', '(A31)'), ('P30_A', '(A66)'), ('P7_B', '(A187)'), ('P35_A', '(A55)'), ('P9_B', '(A166)'), ('P4_A', '(A84)'), ('P33_B', '(A73)'), ('P35_B', '(A133)'), ('P17_B', '(A61)'), ('P44_A', '(A82)'), ('P18_C', '(A142)'), ('P34_A', '(A74)'), ('P3_A', '(A4)'), ('P5_B', '(A35)'), ('P29_A', '(A63)'), ('P21_B', '(A147)'), ('P9_A', '(A99)'), ('P15_B', '(A154)'), ('P28_A', '(A137)'), ('P43_A', '(A30)'), ('P15_A', '(A114)'), ('P45_A', '(A194)'), ('P40_B', '(A14)'), ('P5_A', '(A85)'), ('P7_C', '(A117)'), ('P26_A', '(A193)'), ('P36_B', '(A192)'), ('P18_B', '(A198)'), ('P24_A', '(A155)'), ('P10_A', '(A10)'), ('P40_A', '(A116)'), ('P41_A', '(A7)'), ('P17_A', '(A161)'), ('P14_B', '(A143)'), ('P1_C', '(A11)'), ('P47_B', '(A58)'), ('P26_B', '(A98)'), ('P23_A', '(A146)'), ('P1_B', '(A1)'), ('P31_B', '(A127)'), ('P20_A', '(A164)'), ('P40_C', '(A34)'), ('P32_B', '(A171)')}
+
+################### Iteracao 3 #####################
+Projeto:P30;(A124) saiu, entrou (A165) 
+Projeto:P34;(A125) saiu, entrou (A111) 
+Projeto:P24;(A190) saiu, entrou (A91) 
+Projeto:P21;(A87) saiu, entrou (A71) 
+Projeto:P20;(A130) saiu, entrou (A32) 
+Projeto:P21;(A145) saiu, entrou (A147) 
+Projeto:P18;(A77) saiu, entrou (A101) 
+Projeto:P20;(A72) saiu, entrou (A12) 
+Projeto:P4;(A134) saiu, entrou (A34) 
+Projeto:P21;(A71) saiu, entrou (A157) 
+Projeto:P41;(A97) saiu, entrou (A107) 
+Projeto:P23;(A103) saiu, entrou (A195) 
+Projeto:P40;(A156) saiu, entrou (A84) 
+Projeto:P18;(A22) saiu, entrou (A177) 
+Projeto:P5;(A160) saiu, entrou (A85) 
+Projeto:P7;(A148) saiu, entrou (A187) 
+
+Quantidade de alunos:69
+Quantidade de projetos:41
+Houveram mudancas de 54 arestas:{('P17_A', '(A61)'), ('P8_A', '(A18)'), ('P33_A', '(A53)'), ('P28_A', '(A127)'), ('P27_B', '(A81)'), ('P20_A', '(A32)'), ('P43_A', '(A10)'), ('P17_C', '(A21)'), ('P26_A', '(A143)'), ('P15_A', '(A135)'), ('P5_B', '(A85)'), ('P45_A', '(A155)'), ('P21_B', '(A157)'), ('P24_A', '(A91)'), ('P21_A', '(A147)'), ('P7_B', '(A29)'), ('P18_C', '(A177)'), ('P7_C', '(A187)'), ('P8_B', '(A188)'), ('P20_B', '(A12)'), ('P29_A', '(A149)'), ('P3_B', '(A100)'), ('P25_A', '(A93)'), ('P15_B', '(A54)'), ('P32_A', '(A52)'), ('P4_A', '(A34)'), ('P2_A', '(A31)'), ('P12_A', '(A11)'), ('P26_B', '(A193)'), ('P35_A', '(A75)'), ('P18_A', '(A17)'), ('P36_A', '(A128)'), ('P41_B', '(A7)'), ('P27_A', '(A83)'), ('P41_A', '(A197)'), ('P36_B', '(A68)'), ('P30_A', '(A165)'), ('P14_A', '(A131)'), ('P14_B', '(A51)'), ('P40_C', '(A84)'), ('P23_A', '(A195)'), ('P3_A', '(A33)'), ('P18_B', '(A101)'), ('P40_B', '(A114)'), ('P9_B', '(A66)'), ('P10_A', '(A24)'), ('P37_A', '(A137)'), ('P5_A', '(A35)'), ('P7_A', '(A117)'), ('P40_A', '(A154)'), ('P17_B', '(A181)'), ('P34_A', '(A111)'), ('P33_B', '(A110)'), ('P17_D', '(A161)')}
+
+################### Iteracao 4 #####################
+Projeto:P4;(A105) saiu, entrou (A14) 
+Projeto:P20;(A152) saiu, entrou (A32) 
+Projeto:P21;(A87) saiu, entrou (A145) 
+Projeto:P7;(A17) saiu, entrou (A187) 
+Projeto:P3;(A4) saiu, entrou (A33) 
+Projeto:P5;(A183) saiu, entrou (A85) 
+Projeto:P4;(A14) saiu, entrou (A84) 
+Projeto:P21;(A57) saiu, entrou (A157) 
+Projeto:P35;(A3) saiu, entrou (A55) 
+Projeto:P18;(A37) saiu, entrou (A22) 
+Projeto:P18;(A122) saiu, entrou (A142) 
+Projeto:P41;(A7) saiu, entrou (A107) 
+Projeto:P40;(A6) saiu, entrou (A34) 
+Projeto:P18;(A77) saiu, entrou (A101) 
+Projeto:P21;(A145) saiu, entrou (A147) 
+Projeto:P18;(A22) saiu, entrou (A177) 
+
+Quantidade de alunos:69
+Quantidade de projetos:40
+Houveram mudancas de 48 arestas:{('P10_A', '(A102)'), ('P26_A', '(A98)'), ('P29_A', '(A163)'), ('P21_A', '(A157)'), ('P35_B', '(A55)'), ('P1_C', '(A2)'), ('P2_A', '(A12)'), ('P12_A', '(A31)'), ('P17_A', '(A181)'), ('P47_A', '(A96)'), ('P32_B', '(A172)'), ('P1_A', '(A1)'), ('P9_A', '(A23)'), ('P25_A', '(A193)'), ('P4_A', '(A84)'), ('P43_A', '(A50)'), ('P47_B', '(A158)'), ('P17_B', '(A61)'), ('P7_A', '(A129)'), ('P9_B', '(A99)'), ('P22_A', '(A191)'), ('P34_A', '(A174)'), ('P3_A', '(A94)'), ('P17_D', '(A21)'), ('P17_C', '(A81)'), ('P26_B', '(A198)'), ('P7_B', '(A117)'), ('P20_A', '(A132)'), ('P18_A', '(A142)'), ('P32_A', '(A71)'), ('P27_B', '(A82)'), ('P21_B', '(A147)'), ('P15_A', '(A44)'), ('P45_A', '(A194)'), ('P20_B', '(A32)'), ('P15_B', '(A74)'), ('P30_A', '(A60)'), ('P36_B', '(A192)'), ('P40_B', '(A56)'), ('P40_A', '(A16)'), ('P3_B', '(A33)'), ('P33_A', '(A173)'), ('P14_B', '(A151)'), ('P1_B', '(A11)'), ('P35_A', '(A133)'), ('P24_A', '(A114)'), ('P41_B', '(A27)'), ('P40_C', '(A34)')}
+
+################### Iteracao 5 #####################
+Projeto:P4;(A105) saiu, entrou (A84) 
+Projeto:P34;(A80) saiu, entrou (A165) 
+Projeto:P7;(A21) saiu, entrou (A117) 
+Projeto:P3;(A4) saiu, entrou (A33) 
+Projeto:P23;(A103) saiu, entrou (A146) 
+Projeto:P18;(A122) saiu, entrou (A198) 
+Projeto:P18;(A37) saiu, entrou (A142) 
+Projeto:P40;(A16) saiu, entrou (A34) 
+Projeto:P35;(A3) saiu, entrou (A75) 
+Projeto:P20;(A200) saiu, entrou (A12) 
+Projeto:P41;(A97) saiu, entrou (A197) 
+Projeto:P3;(A94) saiu, entrou (A147) 
+Projeto:P30;(A60) saiu, entrou (A83) 
+Projeto:P5;(A183) saiu, entrou (A35) 
+
+Quantidade de alunos:69
+Quantidade de projetos:40
+Houveram mudancas de 54 arestas:{('P26_B', '(A143)'), ('P7_A', '(A187)'), ('P27_A', '(A81)'), ('P32_B', '(A72)'), ('P14_B', '(A41)'), ('P8_A', '(A188)'), ('P35_A', '(A55)'), ('P9_B', '(A166)'), ('P15_A', '(A135)'), ('P14_A', '(A43)'), ('P45_A', '(A155)'), ('P21_B', '(A157)'), ('P47_A', '(A58)'), ('P2_A', '(A32)'), ('P34_A', '(A165)'), ('P33_A', '(A110)'), ('P20_B', '(A12)'), ('P18_C', '(A142)'), ('P41_A', '(A107)'), ('P3_B', '(A147)'), ('P5_B', '(A35)'), ('P49_B', '(A59)'), ('P40_A', '(A74)'), ('P29_A', '(A63)'), ('P9_A', '(A99)'), ('P15_B', '(A44)'), ('P7_B', '(A46)'), ('P33_B', '(A53)'), ('P1_A', '(A11)'), ('P5_A', '(A85)'), ('P21_A', '(A137)'), ('P7_C', '(A117)'), ('P18_B', '(A198)'), ('P41_C', '(A197)'), ('P37_A', '(A177)'), ('P32_A', '(A171)'), ('P30_A', '(A83)'), ('P26_A', '(A48)'), ('P3_A', '(A33)'), ('P10_A', '(A10)'), ('P40_B', '(A114)'), ('P8_B', '(A18)'), ('P22_A', '(A144)'), ('P20_A', '(A141)'), ('P43_A', '(A196)'), ('P17_C', '(A161)'), ('P24_A', '(A95)'), ('P18_A', '(A101)'), ('P36_B', '(A92)'), ('P35_B', '(A75)'), ('P41_B', '(A47)'), ('P49_A', '(A159)'), ('P23_A', '(A146)'), ('P1_B', '(A1)')}
+
+################### Iteracao 6 #####################
+Projeto:P30;(A124) saiu, entrou (A194) 
+Projeto:P4;(A105) saiu, entrou (A65) 
+Projeto:P34;(A80) saiu, entrou (A25) 
+Projeto:P41;(A47) saiu, entrou (A197) 
+Projeto:P18;(A37) saiu, entrou (A198) 
+Projeto:P4;(A65) saiu, entrou (A84) 
+Projeto:P3;(A4) saiu, entrou (A33) 
+Projeto:P21;(A57) saiu, entrou (A177) 
+Projeto:P5;(A185) saiu, entrou (A85) 
+Projeto:P28;(A58) saiu, entrou (A127) 
+Projeto:P30;(A194) saiu, entrou (A83) 
+Projeto:P18;(A22) saiu, entrou (A157) 
+Projeto:P7;(A146) saiu, entrou (A187) 
+Projeto:P5;(A160) saiu, entrou (A35) 
+Projeto:P40;(A106) saiu, entrou (A34) 
+
+Quantidade de alunos:69
+Quantidade de projetos:40
+Houveram mudancas de 43 arestas:{('P10_A', '(A102)'), ('P21_B', '(A177)'), ('P49_A', '(A59)'), ('P9_B', '(A6)'), ('P7_A', '(A29)'), ('P47_B', '(A98)'), ('P15_B', '(A135)'), ('P36_B', '(A56)'), ('P21_A', '(A147)'), ('P22_A', '(A191)'), ('P18_C', '(A157)'), ('P20_B', '(A64)'), ('P7_C', '(A187)'), ('P7_B', '(A117)'), ('P26_B', '(A193)'), ('P35_A', '(A75)'), ('P45_A', '(A153)'), ('P29_A', '(A49)'), ('P43_A', '(A30)'), ('P40_A', '(A156)'), ('P47_A', '(A158)'), ('P15_A', '(A74)'), ('P14_A', '(A131)'), ('P40_B', '(A154)'), ('P49_B', '(A159)'), ('P33_A', '(A73)'), ('P23_A', '(A195)'), ('P41_B', '(A97)'), ('P36_A', '(A168)'), ('P32_B', '(A71)'), ('P1_A', '(A2)'), ('P3_B', '(A33)'), ('P34_A', '(A25)'), ('P32_A', '(A72)'), ('P37_A', '(A137)'), ('P14_B', '(A143)'), ('P1_C', '(A11)'), ('P20_A', '(A12)'), ('P3_A', '(A44)'), ('P33_B', '(A110)'), ('P9_A', '(A166)'), ('P25_A', '(A184)'), ('P35_B', '(A175)')}
+
+################### Iteracao 7 #####################
+Projeto:P30;(A124) saiu, entrou (A133) 
+Projeto:P4;(A115) saiu, entrou (A65) 
+Projeto:P34;(A40) saiu, entrou (A111) 
+Projeto:P4;(A65) saiu, entrou (A84) 
+Projeto:P18;(A77) saiu, entrou (A57) 
+Projeto:P3;(A44) saiu, entrou (A33) 
+Projeto:P20;(A164) saiu, entrou (A12) 
+Projeto:P7;(A46) saiu, entrou (A187) 
+Projeto:P21;(A145) saiu, entrou (A137) 
+Projeto:P3;(A94) saiu, entrou (A147) 
+Projeto:P23;(A103) saiu, entrou (A146) 
+Projeto:P7;(A17) saiu, entrou (A117) 
+Projeto:P5;(A20) saiu, entrou (A35) 
+Projeto:P41;(A47) saiu, entrou (A107) 
+Projeto:P40;(A116) saiu, entrou (A34) 
+
+Quantidade de alunos:69
+Quantidade de projetos:40
+Houveram mudancas de 45 arestas:{('P1_B', '(A2)'), ('P33_A', '(A53)'), ('P26_B', '(A48)'), ('P32_B', '(A72)'), ('P7_B', '(A187)'), ('P17_C', '(A21)'), ('P25_A', '(A193)'), ('P47_A', '(A58)'), ('P30_A', '(A133)'), ('P33_B', '(A73)'), ('P37_A', '(A157)'), ('P20_A', '(A52)'), ('P18_B', '(A142)'), ('P20_B', '(A12)'), ('P3_B', '(A147)'), ('P26_A', '(A93)'), ('P32_A', '(A71)'), ('P14_A', '(A41)'), ('P41_C', '(A107)'), ('P9_A', '(A99)'), ('P45_A', '(A194)'), ('P17_D', '(A81)'), ('P27_A', '(A83)'), ('P1_A', '(A11)'), ('P41_A', '(A197)'), ('P7_C', '(A117)'), ('P15_B', '(A74)'), ('P36_A', '(A192)'), ('P18_C', '(A57)'), ('P3_A', '(A33)'), ('P10_A', '(A10)'), ('P9_B', '(A66)'), ('P47_B', '(A96)'), ('P18_A', '(A198)'), ('P40_B', '(A102)'), ('P40_A', '(A54)'), ('P21_B', '(A137)'), ('P14_B', '(A151)'), ('P34_A', '(A111)'), ('P15_A', '(A14)'), ('P24_A', '(A114)'), ('P41_B', '(A27)'), ('P23_A', '(A146)'), ('P1_C', '(A1)'), ('P21_A', '(A177)')}
+
+################### Iteracao 8 #####################
+Projeto:P5;(A60) saiu, entrou (A85) 
+Projeto:P21;(A77) saiu, entrou (A147) 
+Projeto:P4;(A105) saiu, entrou (A34) 
+Projeto:P5;(A160) saiu, entrou (A35) 
+Projeto:P21;(A87) saiu, entrou (A171) 
+Projeto:P24;(A115) saiu, entrou (A193) 
+Projeto:P3;(A94) saiu, entrou (A33) 
+Projeto:P18;(A122) saiu, entrou (A101) 
+Projeto:P20;(A132) saiu, entrou (A32) 
+Projeto:P7;(A17) saiu, entrou (A117) 
+Projeto:P41;(A97) saiu, entrou (A107) 
+Projeto:P21;(A171) saiu, entrou (A177) 
+Projeto:P20;(A24) saiu, entrou (A12) 
+Projeto:P18;(A37) saiu, entrou (A57) 
+Projeto:P40;(A16) saiu, entrou (A84) 
+Projeto:P18;(A22) saiu, entrou (A157) 
+
+Quantidade de alunos:68
+Quantidade de projetos:40
+Houveram mudancas de 47 arestas:{('P17_A', '(A61)'), ('P8_A', '(A18)'), ('P24_A', '(A193)'), ('P7_A', '(A187)'), ('P15_B', '(A174)'), ('P27_B', '(A81)'), ('P7_B', '(A21)'), ('P20_A', '(A32)'), ('P18_B', '(A57)'), ('P25_A', '(A104)'), ('P1_A', '(A1)'), ('P26_A', '(A142)'), ('P43_A', '(A46)'), ('P9_A', '(A23)'), ('P21_B', '(A177)'), ('P47_B', '(A158)'), ('P21_A', '(A147)'), ('P40_A', '(A6)'), ('P14_B', '(A131)'), ('P30_A', '(A183)'), ('P18_C', '(A157)'), ('P8_B', '(A188)'), ('P29_A', '(A149)'), ('P4_A', '(A34)'), ('P12_A', '(A11)'), ('P45_A', '(A153)'), ('P15_A', '(A114)'), ('P41_B', '(A7)'), ('P33_B', '(A53)'), ('P36_B', '(A192)'), ('P40_C', '(A84)'), ('P33_A', '(A73)'), ('P22_A', '(A144)'), ('P40_B', '(A74)'), ('P3_B', '(A33)'), ('P32_A', '(A72)'), ('P17_C', '(A161)'), ('P37_A', '(A137)'), ('P18_A', '(A101)'), ('P3_A', '(A100)'), ('P17_B', '(A181)'), ('P32_B', '(A51)'), ('P2_A', '(A82)'), ('P35_A', '(A133)'), ('P36_A', '(A92)'), ('P9_B', '(A69)'), ('P1_C', '(A31)')}
+
+################### Iteracao 9 #####################
+Projeto:P34;(A5) saiu, entrou (A174) 
+Projeto:P21;(A77) saiu, entrou (A145) 
+Projeto:P21;(A145) saiu, entrou (A177) 
+Projeto:P18;(A178) saiu, entrou (A101) 
+Projeto:P18;(A122) saiu, entrou (A98) 
+Projeto:P7;(A17) saiu, entrou (A187) 
+Projeto:P41;(A27) saiu, entrou (A107) 
+Projeto:P7;(A129) saiu, entrou (A117) 
+Projeto:P4;(A134) saiu, entrou (A34) 
+Projeto:P40;(A74) saiu, entrou (A84) 
+Projeto:P20;(A141) saiu, entrou (A32) 
+Projeto:P28;(A48) saiu, entrou (A137) 
+Projeto:P3;(A4) saiu, entrou (A33) 
+
+Quantidade de alunos:71
+Quantidade de projetos:41
+Houveram mudancas de 49 arestas:{('P17_C', '(A61)'), ('P35_B', '(A55)'), ('P26_B', '(A142)'), ('P2_A', '(A12)'), ('P9_A', '(A149)'), ('P27_A', '(A81)'), ('P47_A', '(A96)'), ('P32_B', '(A172)'), ('P27_B', '(A83)'), ('P29_A', '(A69)'), ('P14_B', '(A41)'), ('P7_B', '(A187)'), ('P45_A', '(A173)'), ('P26_A', '(A143)'), ('P15_A', '(A135)'), ('P25_A', '(A193)'), ('P40_B', '(A184)'), ('P37_A', '(A157)'), ('P18_A', '(A22)'), ('P7_A', '(A146)'), ('P17_D', '(A181)'), ('P34_A', '(A174)'), ('P44_A', '(A82)'), ('P17_B', '(A21)'), ('P49_B', '(A59)'), ('P32_A', '(A52)'), ('P35_A', '(A75)'), ('P28_A', '(A137)'), ('P43_A', '(A30)'), ('P15_B', '(A44)'), ('P36_B', '(A68)'), ('P20_B', '(A32)'), ('P30_A', '(A165)'), ('P14_A', '(A131)'), ('P3_A', '(A47)'), ('P23_A', '(A195)'), ('P18_B', '(A101)'), ('P9_B', '(A66)'), ('P40_A', '(A116)'), ('P10_A', '(A24)'), ('P1_A', '(A2)'), ('P18_C', '(A98)'), ('P20_A', '(A152)'), ('P17_A', '(A161)'), ('P49_A', '(A159)'), ('P24_A', '(A114)'), ('P1_B', '(A1)'), ('P31_B', '(A127)'), ('P22_A', '(A192)')}
+
+######################## Maior emparelhamento #######################
+P18_A -- (A22)
+P18_B -- (A101)
+P18_C -- (A98)
+P37_A -- (A157)
+P35_A -- (A75)
+P35_B -- (A55)
+P26_A -- (A143)
+P26_B -- (A142)
+P29_A -- (A69)
+P24_A -- (A114)
+P4_A -- (A34)
+P30_A -- (A165)
+P43_A -- (A30)
+P15_A -- (A135)
+P15_B -- (A44)
+P14_A -- (A131)
+P14_B -- (A41)
+P32_A -- (A52)
+P32_B -- (A172)
+P3_A -- (A47)
+P3_B -- (A33)
+P34_A -- (A174)
+P7_A -- (A146)
+P7_B -- (A187)
+P7_C -- (A117)
+P41_A -- (A197)
+P41_B -- (A7)
+P41_C -- (A107)
+P21_A -- (A147)
+P21_B -- (A177)
+P31_A -- (A167)
+P31_B -- (A127)
+P47_A -- (A96)
+P47_B -- (A158)
+P20_A -- (A152)
+P20_B -- (A32)
+P17_A -- (A161)
+P17_B -- (A21)
+P17_C -- (A61)
+P17_D -- (A181)
+P33_A -- (A73)
+P33_B -- (A53)
+P9_A -- (A149)
+P9_B -- (A66)
+P36_A -- (A92)
+P36_B -- (A68)
+P8_A -- (A18)
+P8_B -- (A188)
+P40_A -- (A116)
+P40_B -- (A184)
+P40_C -- (A84)
+P5_A -- (A85)
+P5_B -- (A35)
+P23_A -- (A195)
+P16_A -- (A42)
+P1_A -- (A2)
+P1_B -- (A1)
+P1_C -- (A31)
+P49_A -- (A159)
+P49_B -- (A59)
+P10_A -- (A24)
+P45_A -- (A173)
+P25_A -- (A193)
+P27_A -- (A81)
+P27_B -- (A83)
+P28_A -- (A137)
+P12_A -- (A11)
+P6_A -- (A8)
+P22_A -- (A192)
+P2_A -- (A12)
+P44_A -- (A82)
+
+Quantidade de vagas preenchidas:71
+Quantidade de alunos em projetos:71
+Total de projetos sem alunos: 9
+Total de alunos sem projeto: 129
